@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+		<div>
+			<h2>{{ category.name }}</h2>	
+			<h3>{{ item.title }}</h2>	
+			<h3>{{ item.description }} </h3>
+			<br>
+		</div>
+		<div>
+			{%if creator %}
+				{%if creator == item.user_id%}
+			<a href='{{url_for('editCatalogItem', item_title=item.title)}}'>Edit</a> |
+			<a href='{{url_for('deleteCatalogItem', item_title=item.title)}}'>Delete</a>
+				{%endif%}
+			{%endif%} 
+		</div>
+		<div>
+			<a href ="{{url_for('showCategoriesAndLatestItems')}}">Return to Main</a>
+		</div>
+{% endblock %}
+
